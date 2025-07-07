@@ -1,0 +1,1 @@
+export interface IGithubRepositoryService {} // There should be basic contract for this service, but project is small... I do not see any sense to write this
