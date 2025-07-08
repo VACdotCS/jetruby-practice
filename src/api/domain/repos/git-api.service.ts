@@ -1,8 +1,8 @@
 import axios, {AxiosError, AxiosInstance} from "axios";
 
-export interface IGithubRepositoryService {}
+export interface IGithubApiService {}
 
-export class GitApiService implements IGithubRepositoryService {
+export class GitApiService implements IGithubApiService {
     private readonly githubApi: AxiosInstance;
 
     constructor() {

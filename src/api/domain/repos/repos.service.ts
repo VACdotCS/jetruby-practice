@@ -1,10 +1,10 @@
 import { IGithubRepositoryService } from "./interface";
-import { GitApiService } from "./git-api.service";
+import {GitApiService, IGithubApiService} from "./git-api.service";
 import { clearTimeout } from "node:timers";
 import {GithubRepositoryRepo} from "./repos.repository";
 
 class GithubRepositoryService implements IGithubRepositoryService {
-    private readonly gitApiService: IGithubRepositoryService;
+    private readonly gitApiService: IGithubApiService;
     private readonly repo: GithubRepositoryRepo;
 
     // Worker config
@@ -30,6 +30,13 @@ class GithubRepositoryService implements IGithubRepositoryService {
         this.workerTimer = setTimeout(this.gitRepoPullerWorkerAction, this.updateReposIntervalMs);
     }
 
+    stopWorker = () => {
+        if (this.workerTimer) {
+            clearTimeout(this.workerTimer);
+            this.workerTimer = null;
+        }
+    }
+
     // Functions for controllers
 
     public getGithubRepoById = async (id: string) => { }
@@ -46,13 +53,6 @@ class GithubRepositoryService implements IGithubRepositoryService {
         await this.gitRepoPullerWorkerAction();
 
         this.runRepoPullerWorker();
-    }
-
-    stopWorker = () => {
-        if (this.workerTimer) {
-            clearTimeout(this.workerTimer);
-            this.workerTimer = null;
-        }
     }
 }
 
