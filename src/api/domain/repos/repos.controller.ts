@@ -9,8 +9,10 @@ class GithubRepositoryController {
         try {
             const repos = await githubRepositoryService.getAllGithubRepos();
             res.status(HttpStatusCode.Ok).json(repos);
-        } catch (error: unknown) {
-            res.status(HttpStatusCode.BadRequest).send(error);
+        } catch (error: any) {
+            res.status(HttpStatusCode.BadRequest).json({
+                error: error.toString(),
+            });
         }
     }
 
@@ -50,8 +52,10 @@ class GithubRepositoryController {
                 error: 'Validation error',
                 message: "'name' or 'id' is required in query"
             });
-        } catch (error: unknown) {
-            res.status(HttpStatusCode.BadRequest).send(error);
+        } catch (error: any) {
+            res.status(HttpStatusCode.BadRequest).json({
+                error: error.toString(),
+            });
         }
     }
 
