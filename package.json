@@ -4,12 +4,13 @@
   "description": "Summer 2025, Kubsu Practice",
   "scripts": {
     "start-api-windows:dev": "cross-env NODE_ENV=dev nodemon src/api/main.ts",
-    "start-api-windows:prod": "tsc && cross-env NODE_ENV=prod node dist/api/main.js",
+    "start-api-windows:prod": "tsc && cross-env NODE_ENV=dev node dist/api/main.js",
     "start-api-linux:dev": "NODE_ENV=dev nodemon src/api/main.ts",
-    "start-api-linux:prod": "tsc && NODE_ENV=prod node dist/api/main.js"
+    "start-api-linux:prod": "tsc && NODE_ENV=prod node dist/api/main.js",
+    "build": "tsc"
   },
   "bin": {
-    "git-repo": ".dist/cli/cli.js"
+    "git-repo-puller": "./dist/cli/cli.js"
   },
   "author": "Vladimir Taburkin",
   "license": "ISC",
@@ -23,9 +24,14 @@
   },
   "dependencies": {
     "axios": "^1.10.0",
+    "chalk": "^4.1.2",
+    "colorette": "^2.0.20",
+    "commander": "^14.0.0",
     "dotenv": "^17.0.1",
     "express": "^5.1.0",
     "http-errors": "^2.0.0",
-    "mongoose": "^8.16.1"
+    "inquirer": "^12.7.0",
+    "mongoose": "^8.16.1",
+    "ora": "^5.4.1"
   }
 }
