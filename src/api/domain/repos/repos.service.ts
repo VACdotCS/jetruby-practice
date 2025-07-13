@@ -85,8 +85,6 @@ class GithubRepositoryService implements IGithubRepositoryService {
                 if (updateResult.upsertedCount) {
                     updatedReposCount++;
                 }
-
-                console.log(updateResult);
             }
 
             processedEntitiesCounter++;

@@ -5,6 +5,6 @@ const githubRepoRouter: Router = Router(); // Nest like controller
 
 githubRepoRouter.get('', githubRepositoryController.getGithubRepoById);
 githubRepoRouter.get('/all', githubRepositoryController.getAllGithubRepos);
-githubRepoRouter.head('/force-sync', githubRepositoryController.forceReposUpdate)
+githubRepoRouter.post('/force-sync', githubRepositoryController.forceReposUpdate)
 
 export { githubRepoRouter };
