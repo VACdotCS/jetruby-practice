@@ -14,7 +14,7 @@ class GithubRepositoryController {
         }
     }
 
-    async getGithubRepoById(req: express.Request<null, null, null, { id: number, name: string }>, res: express.Response) {
+    async getGithubRepoByNameOrId(req: express.Request<null, null, null, { id: number, name: string }>, res: express.Response) {
         try {
             const { id, name } = req.query;
 

@@ -3,7 +3,7 @@ import { githubRepositoryController } from "./repos.controller";
 
 const githubRepoRouter: Router = Router(); // Nest like controller
 
-githubRepoRouter.get('', githubRepositoryController.getGithubRepoById);
+githubRepoRouter.get('', githubRepositoryController.getGithubRepoByNameOrId);
 githubRepoRouter.get('/all', githubRepositoryController.getAllGithubRepos);
 githubRepoRouter.post('/force-sync', githubRepositoryController.forceReposUpdate)
 
