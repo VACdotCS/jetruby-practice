@@ -15,6 +15,7 @@ class GithubRepositoryService implements IGithubRepositoryService {
     // Worker config
     private updateReposIntervalMs: number = 1000000;
     private workerTimer: NodeJS.Timeout | null = null;
+    private isReposPulling: boolean = false;
 
     constructor() {
         this.gitApiService = new GitApiService();
@@ -25,6 +26,7 @@ class GithubRepositoryService implements IGithubRepositoryService {
 
     private gitRepoPullerWorkerAction = async () => {
         console.log('Starting Github Top Rated Repos Worker');
+        this.isReposPulling = true;
 
         const topRatedRepos: IGitRepository[] = await this.gitApiService.getTopRepos({
             limit: 100,
@@ -95,6 +97,8 @@ class GithubRepositoryService implements IGithubRepositoryService {
         console.log(`Added new repos: ${newReposFound}`);
         console.log(`Updated repos: ${updatedReposCount}`);
 
+        this.isReposPulling = false;
+
         this.runRepoPullerWorker();
     }
 
@@ -137,13 +141,17 @@ class GithubRepositoryService implements IGithubRepositoryService {
         this.gitRepoPullerWorkerAction().then(this.runRepoPullerWorker);
     }
 
-    public gitRepoForcePull = async () => {
+    public gitRepoForcePull = () => {
+        if (this.isReposPulling) {
+            throw new Error('Repository worker is running now, wait...');
+        }
+
         console.log('Restart timer for git repo worker and force pulling now');
         this.stopWorker();
 
-        await this.gitRepoPullerWorkerAction();
-
-        this.runRepoPullerWorker();
+        this.gitRepoPullerWorkerAction().then(() => {
+            this.runRepoPullerWorker()
+        });
     }
 }
 

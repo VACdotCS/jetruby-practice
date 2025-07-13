@@ -57,12 +57,14 @@ class GithubRepositoryController {
 
     async forceReposUpdate(req: express.Request, res: express.Response) {
         try {
-            await githubRepositoryService.gitRepoForcePull();
+            githubRepositoryService.gitRepoForcePull();
             res.status(HttpStatusCode.Ok).json({
-                message: 'Repository worker successfully restarted, repositories force pulled.',
+                message: 'Repository worker successfully restarted, repositories force pulling',
             })
-        } catch (error: unknown) {
-            res.status(HttpStatusCode.BadRequest).send(error);
+        } catch (error: any) {
+            res.status(HttpStatusCode.BadRequest).json({
+                error: error.toString(),
+            });
         }
     }
 }
