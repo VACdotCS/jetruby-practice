@@ -1,6 +1,9 @@
 import axios, {AxiosError, AxiosInstance} from "axios";
+import {IGitRepository} from "./entities/GitRepository";
 
-export interface IGithubApiService {}
+export interface IGithubApiService {
+    getTopRepos: (params: { limit?: number }) => Promise<IGitRepository[]>;
+}
 
 export class GitApiService implements IGithubApiService {
     private readonly githubApi: AxiosInstance;
@@ -20,9 +23,14 @@ export class GitApiService implements IGithubApiService {
         })
     }
 
-    async getTopRepos(limit?: number) {
+    /**
+     * @throws AxiosError
+     * */
+    async getTopRepos(params: { limit?: number }): Promise<IGitRepository[]> {
         try {
-            const response = await this.githubApi.get('/search/repositories', {
+            const { limit } = params;
+            console.log(`Collecting top repos from GitHub API: limit = ${limit}`);
+            const response = await this.githubApi.get('/search/repositories?q=Q', {
                 params: {
                     sort: 'stars',
                     order: 'desc',
