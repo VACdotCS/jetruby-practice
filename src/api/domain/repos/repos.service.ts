@@ -13,7 +13,7 @@ class GithubRepositoryService implements IGithubRepositoryService {
     private readonly repo: Model<IGitRepository>;
 
     // Worker config
-    private updateReposIntervalMs: number = 1000000;
+    private updateReposIntervalMs: number = 60 * 60 * 1000; // 60 minutes
     private workerTimer: NodeJS.Timeout | null = null;
     private isReposPulling: boolean = false;
 

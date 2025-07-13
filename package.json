@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Summer 2025, Kubsu Practice",
   "scripts": {
-    "start-api:dev": "cross-env NODE_ENV=dev nodemon src/api/main.ts"
+    "start-api-windows:dev": "cross-env NODE_ENV=dev nodemon src/api/main.ts",
+    "start-api-windows:prod": "tsc && cross-env NODE_ENV=prod node dist/api/main.js",
+    "start-api-linux:dev": "NODE_ENV=dev nodemon src/api/main.ts",
+    "start-api-linux:prod": "tsc && NODE_ENV=prod node dist/api/main.js"
   },
   "bin": {
     "git-repo": ".dist/cli/cli.js"
