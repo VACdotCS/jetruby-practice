@@ -104,6 +104,7 @@ class GithubRepositoryService implements IGithubRepositoryService {
 
 
     private runRepoPullerWorker = () => {
+        console.log(`Repo Puller Worker Timer reset, next run scheduled at: ${new Date(Date.now() + this.updateReposIntervalMs).toISOString()}`);
         this.workerTimer = setTimeout(this.gitRepoPullerWorkerAction, this.updateReposIntervalMs);
     }
 
@@ -138,7 +139,7 @@ class GithubRepositoryService implements IGithubRepositoryService {
     }
 
     public initializeWorker = () => {
-        this.gitRepoPullerWorkerAction().then(this.runRepoPullerWorker);
+        this.gitRepoPullerWorkerAction();
     }
 
     public gitRepoForcePull = () => {
