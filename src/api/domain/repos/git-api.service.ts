@@ -30,8 +30,9 @@ export class GitApiService implements IGithubApiService {
         try {
             const { limit } = params;
             console.log(`Collecting top repos from GitHub API: limit = ${limit}`);
-            const response = await this.githubApi.get('/search/repositories?q=Q', {
+            const response = await this.githubApi.get('/search/repositories', {
                 params: {
+                    q: 'stars:>0',
                     sort: 'stars',
                     order: 'desc',
                     per_page: limit ?? 10
