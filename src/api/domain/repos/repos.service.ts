@@ -35,7 +35,9 @@ class GithubRepositoryService implements IGithubRepositoryService {
         let updatedReposCount: number = 0;
 
         for (const repo of topRatedRepos) {
-            const candidate = await this.getGithubRepoById(repo.id);
+            const candidate: IGitRepository | null = await this.getGithubRepoBy({
+                id: repo.id,
+            });
 
             if (!candidate) {
                 let _license;
@@ -112,9 +114,9 @@ class GithubRepositoryService implements IGithubRepositoryService {
 
     // Functions for controllers
 
-    public getGithubRepoById = async (id: number): Promise<IGitRepository | null> => {
+    public getGithubRepoBy = async (partialEntity: Partial<IGitRepository>): Promise<IGitRepository | null> => {
         const gitRepo = await this.repo.where({
-            id,
+            ...partialEntity
         })
           .findOne()
           .populate('license')
@@ -138,6 +140,7 @@ class GithubRepositoryService implements IGithubRepositoryService {
     }
 
     public gitRepoForcePull = async () => {
+        console.log('Restart timer for git repo worker and force pulling now');
         this.stopWorker();
 
         await this.gitRepoPullerWorkerAction();
