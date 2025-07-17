@@ -15,6 +15,7 @@
   "author": "Vladimir Taburkin",
   "license": "ISC",
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.0.10",
     "cross-env": "^7.0.3",
@@ -27,6 +28,7 @@
     "chalk": "^4.1.2",
     "colorette": "^2.0.20",
     "commander": "^14.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^17.0.1",
     "express": "^5.1.0",
     "http-errors": "^2.0.0",

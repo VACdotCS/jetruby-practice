@@ -25,7 +25,7 @@ class GithubRepositoryController {
 
                 if (!gitRepo) {
                     res.status(HttpStatusCode.NotFound).json({
-                        message: 'No Github repository found',
+                        message: 'No Github repository found by given id',
                     });
                     return;
                 }
@@ -39,7 +39,7 @@ class GithubRepositoryController {
 
                 if (!gitRepo) {
                     res.status(HttpStatusCode.NotFound).json({
-                        message: 'No Github repository found',
+                        message: 'No Github repository found by given name',
                     });
                     return;
                 }

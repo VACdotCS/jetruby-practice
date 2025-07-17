@@ -1,4 +1,5 @@
 import * as dotenv from 'dotenv';
+import cors from 'cors';
 
 dotenv.config({
     path: `./env/.${process.env.NODE_ENV}.env`,
@@ -14,13 +15,14 @@ async function start() {
     const app: Express = express();
     await connectDB();
 
+    app.use(cors())
     app.use(appRouter);
     app.use(errorHandler);
 
     githubRepositoryService.initializeWorker();
 
-    app.listen(3000, () => {
-        console.log(`Server started on port 3000`);
+    app.listen(5000, () => {
+        console.log(`Server started on port 5000`);
     })
 }
 

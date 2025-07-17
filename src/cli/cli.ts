@@ -22,7 +22,7 @@ function catchApiError(err: any, spinner: any) {
 }
 
 const api = axios.create({
-    baseURL: "http://localhost:3000",
+    baseURL: "http://localhost:5000",
     signal: controller.signal,
 });
 
