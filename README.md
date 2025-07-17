@@ -20,6 +20,7 @@ Summer 2025, Kubsu Practice
 - Graceful shutdown
 - Health Check
 - Docker config
+- Make the interval worker a separate process
 
 #### For big application better alternative is **_NestJS_**
 
