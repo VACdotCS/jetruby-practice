@@ -41,7 +41,7 @@ export class ReposApi {
     }
   }
 
-  static async runRepoForcePull(name) {
+  static async runRepoForcePull() {
     try {
       await api.post("repos/force-sync");
     } catch (error) {
