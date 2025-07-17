@@ -4,8 +4,8 @@ Summer 2025, Kubsu Practice
 # API
 
 ## ENV
-GIT_API_KEY - key for github api
-DB_URI - mongodb connection string
+- GIT_API_KEY - key for github api
+- DB_URI - mongodb connection string
 
 ## Technologies:
 - Express - little framework to work with node:http/s, task is small as this framework, but scalable
