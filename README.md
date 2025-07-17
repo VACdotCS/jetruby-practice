@@ -17,6 +17,7 @@ Summer 2025, Kubsu Practice
 - Auth - there is no authorization
 - Swagger - empty
 - Validation - class-validator, class-transformer, zod ...
+- Graceful shutdown
 
 #### For big application better alternative is **_NestJS_**
 
