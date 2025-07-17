@@ -18,6 +18,8 @@ Summer 2025, Kubsu Practice
 - Swagger - empty
 - Validation - class-validator, class-transformer, zod ...
 - Graceful shutdown
+- Health Check
+- Docker config
 
 #### For big application better alternative is **_NestJS_**
 
