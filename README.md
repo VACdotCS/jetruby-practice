@@ -34,6 +34,9 @@ MongoDB can store them as-is, without complex schemas or JOIN operations, speedi
 SQL databases would require rigid schemas and extra transformations, whereas simplicity and speed are key here.
 If complex relationships or transactions were needed, SQL would be preferable—but for this use case, **it’s overkill**.
 
+## Api conceptual schema
+![img.png](docs/img.png)
+
 # Command Line Interface
 
 ## Technologies:

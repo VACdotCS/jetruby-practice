@@ -1,5 +1,3 @@
-// noinspection TypeScriptUnresolvedReference
-
 import {IGitRepository} from "../entities/GitRepository";
 import {ILicense} from "../entities/License";
 import {IOwner} from "../entities/Owner";
